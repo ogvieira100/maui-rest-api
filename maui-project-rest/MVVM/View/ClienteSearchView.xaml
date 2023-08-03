@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="maui_project_rest.MVVM.View.ClienteSearchView"
+             Title="ClienteSearchView">
+    <VerticalStackLayout>
+        <Label 
+            Text="Buscar Clientes"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center"
+            />
+        <Button
+            Command="{Binding SearchCommand}"
+            Text="Buscar"
+            >
+        </Button>
+        <Button
+            Text="Adicionar Clientes"
+            x:Name="btnAdicionarCliente"
+            Clicked="btnAdicionarCliente_Clicked"
+            >
+        </Button>
+        <CollectionView
+        ItemsSource="{Binding Clientes}"
+        SelectionMode="Multiple"
+        SelectedItems="{Binding ClienteSelected}"
+        Grid.Row="1">
+            <CollectionView.Header>
+                <Frame  BackgroundColor="{StaticResource Primary}">
+                    <Label
+                    VerticalOptions="Center" 
+                    FontAttributes="Bold"
+                    Text="Clientes"
+                    TextColor="White" />
+                </Frame>
+            </CollectionView.Header>
+            <CollectionView.Footer>
+                <HorizontalStackLayout>
+                    <Label FontSize="Title">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Clientes Consulta" TextColor="{StaticResource Primary}" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                </HorizontalStackLayout>
+            </CollectionView.Footer>
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Vertical" />
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame
+                    Margin="15"
+                    HeightRequest="100"
+                    WidthRequest="200">
+                        <VerticalStackLayout>
+                            <Label HorizontalTextAlignment="Center" Text="{Binding CPF}" />
+                            <Label HorizontalTextAlignment="Center" Text="{Binding Nome}" />
+                            <Label HorizontalTextAlignment="Center" Text="{Binding Endereco}" />
+                        </VerticalStackLayout>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </VerticalStackLayout>
+</ContentPage>
