@@ -4,6 +4,7 @@ using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using domain;
 using data;
+using api.Migration;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -80,5 +81,7 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.MigrateDatabase();
 
 app.Run();
