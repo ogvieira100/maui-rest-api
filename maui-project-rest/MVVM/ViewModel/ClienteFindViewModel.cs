@@ -15,24 +15,27 @@ namespace maui_project_rest.MVVM.ViewModel
     [AddINotifyPropertyChangedInterface]
     public class ClienteFindViewModel
     {
-        public ObservableCollection<ClienteViewModel> Clientes { get; set; } =
-                        new ObservableCollection<ClienteViewModel>();
+        public ObservableCollection<ClienteFindDetailViewModel> Clientes { get; set; } =
+                        new ObservableCollection<ClienteFindDetailViewModel>();
 
-        public ClienteViewModel ClienteSelected { get; set; }
+        public ClienteFindDetailViewModel ClienteSelected { get; set; }
         public bool IsRefreshing { get; set; }
 
         HttpClient _client;
         public bool IsLoading { get; set; }
         public string NameSearch { get; set; }
+
         public ICommand SearchCommand =>
         new Command(async () =>
         {
+            IsLoading = true;   
             var result = await _client.GetAsync("api/clientes");
+            IsLoading = false;
             if (result.IsSuccessStatusCode)
             {
                 
                 var response = await result.Content.ReadAsStreamAsync();
-                var clientes = (await JsonSerializer.DeserializeAsync<PagedDataResponse<ClienteViewModel>>(response, new JsonSerializerOptions
+                var clientes = (await JsonSerializer.DeserializeAsync<PagedDataResponse<ClienteFindDetailViewModel>>(response, new JsonSerializerOptions
                 {
                     PropertyNameCaseInsensitive = true
                 }));
