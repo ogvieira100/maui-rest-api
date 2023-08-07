@@ -24,17 +24,31 @@
             >
             </Button>
             <CollectionView
-        ItemsSource="{Binding Clientes}"
-        SelectionMode="Multiple"
-        SelectedItems="{Binding ClienteSelected}"
-        Grid.Row="1">
+                ItemsSource="{Binding Clientes}"
+                SelectionMode="Single"
+                SelectedItem="{Binding ClienteSelected}"
+            >   
                 <CollectionView.Header>
                     <Frame  BackgroundColor="{StaticResource Primary}">
-                        <Label
-                    VerticalOptions="Center" 
-                    FontAttributes="Bold"
-                    Text="Clientes"
-                    TextColor="White" />
+                        <VerticalStackLayout>
+                            <Label
+                                VerticalOptions="Center" 
+                                FontAttributes="Bold"
+                                Text="Clientes"
+                                TextColor="White" />
+                            <Button
+                                x:Name="btnExcluirClientes"
+                                Clicked="btnExcluirClientes_Clicked"
+                                Text="Deletar Clientes"
+                                >
+                            </Button>
+                            <Button
+                                x:Name="btnEditarClientes"
+                                Clicked="btnEditarClientes_Clicked"
+                                Text="Editar Clientes"
+                                >
+                            </Button>
+                        </VerticalStackLayout>
                     </Frame>
                 </CollectionView.Header>
                 <CollectionView.Footer>

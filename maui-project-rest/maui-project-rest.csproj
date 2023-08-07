@@ -66,6 +66,9 @@
 	  <MauiXaml Update="MVVM\View\ClienteAddView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="MVVM\View\ClienteDeleteView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="MVVM\View\ClienteEditView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

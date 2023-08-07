@@ -13,14 +13,13 @@ namespace maui_project_rest.MVVM.ViewModel
     [AddINotifyPropertyChangedInterface]
     public class ClienteFindDetailViewModel
     {
-
+        public Guid Id { get; set; }
         public string CPF { get; set; }
 
         public string Nome { get; set; }
 
         public string Endereco { get; set; }
 
-        HttpClient _client;
 
         public ClienteFindDetailViewModel()
         {

@@ -1,4 +1,5 @@
 ﻿using domain;
+using maui_project_rest.MVVM.Model;
 using maui_project_rest.Util;
 using PropertyChanged;
 using System;
@@ -24,6 +25,9 @@ namespace maui_project_rest.MVVM.ViewModel
         HttpClient _client;
         public bool IsLoading { get; set; }
         public string NameSearch { get; set; }
+
+       
+ 
 
         public ICommand SearchCommand =>
         new Command(async () =>

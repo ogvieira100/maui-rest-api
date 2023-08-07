@@ -1,5 +1,4 @@
-﻿using maui_project_rest.MVVM.Model;
-using maui_project_rest.Util;
+﻿using maui_project_rest.Util;
 using PropertyChanged;
 using System;
 using System.Collections.Generic;
@@ -11,8 +10,9 @@ using System.Windows.Input;
 
 namespace maui_project_rest.MVVM.ViewModel
 {
+
     [AddINotifyPropertyChangedInterface]
-    public class ClienteEditViewModel
+    public class ClienteDeleteViewModel
     {
 
         public Guid Id { get; set; }
@@ -34,31 +34,19 @@ namespace maui_project_rest.MVVM.ViewModel
 
         public async Task AtualizarCliente()
         {
-            var clienteViewModelSend = new ClienteRestPut
-            {
-                CPF = CPF,
-                Nome = Nome,
-                Endereco = Endereco,
-                Id = Id 
-            };
-
-            var _serializerOptions = new JsonSerializerOptions { WriteIndented = true };
-            var serialize = JsonSerializer.Serialize(clienteViewModelSend, _serializerOptions);
-            StringContent content = new StringContent(serialize, encoding: Encoding.UTF8, "application/json");
             IsLoading = true;
-            var resp = await _client.PutAsync("api/clientes", content);
+            var resp = await _client.DeleteAsync("api/clientes");
             if (resp.IsSuccessStatusCode)
             {
 
-                
+
             }
             IsLoading = false;
         }
 
-        public ClienteEditViewModel()
+        public ClienteDeleteViewModel()
         {
             _client = HttpHelper.GetHttpClient(port: 44340);
         }
-
     }
 }

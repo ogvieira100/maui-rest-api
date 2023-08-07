@@ -2,11 +2,52 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="maui_project_rest.MVVM.View.ClienteEditView"
+              xmlns:controls="clr-namespace:maui_project_rest.MVVM.View"
              Title="ClienteEditView">
     <VerticalStackLayout>
+        <controls:LoadingAnimation IsVisible="{Binding IsLoading}" />
         <Label 
-            Text="Welcome to .NET MAUI!"
+            Text="CPF"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
+        <Entry
+            x:Name="txtCPF"
+            Placeholder="CPF"
+            VerticalOptions="Center"
+            HorizontalOptions="Fill"
+            Text="{Binding CPF}"
+            >
+        </Entry>
+        <Label 
+            Text="Nome"
+            VerticalOptions="Center" 
+            HorizontalOptions="Fill" />
+        <Entry
+            x:Name="txtNome"
+            Placeholder="Nome"
+            VerticalOptions="Center"
+            HorizontalOptions="Fill"
+            Text="{Binding Nome}"
+            >
+        </Entry>
+        <Label 
+            Text="Endereço"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+        <Entry
+            x:Name="txtEndereco"
+            Placeholder="Endereco"
+            VerticalOptions="Center"
+            HorizontalOptions="Fill"
+            Text="{Binding Endereco}"
+            >
+        </Entry>
+        <Button
+            x:Name="btnSalvar"
+            Text="Salvar"
+            Clicked="btnSalvar_Clicked"
+            >
+
+        </Button>
     </VerticalStackLayout>
 </ContentPage>
