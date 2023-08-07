@@ -22,7 +22,13 @@ public partial class ClienteSearchView : ContentPage
 
     private async void btnExcluirClientes_Clicked(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new ClienteDeleteView());
+        await Navigation.PushAsync(new ClienteDeleteView(new ClienteDeleteViewModel
+        {
+            CPF = _clienteFindViewModel.ClienteSelected.CPF,
+            Id = _clienteFindViewModel.ClienteSelected.Id,
+            Endereco = _clienteFindViewModel.ClienteSelected.Endereco,
+            Nome = _clienteFindViewModel.ClienteSelected.Nome
+        }));
     }
 
     private async void btnEditarClientes_Clicked(object sender, EventArgs e)

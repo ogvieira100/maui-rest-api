@@ -29,13 +29,13 @@ namespace maui_project_rest.MVVM.ViewModel
 
         public ICommand Salvar => new Command(async () =>
         {
-            await AtualizarCliente();
+            await DeletarCliente();
         });
 
-        public async Task AtualizarCliente()
+        public async Task DeletarCliente()
         {
             IsLoading = true;
-            var resp = await _client.DeleteAsync("api/clientes");
+            var resp = await _client.DeleteAsync($"api/clientes/{Id}");
             if (resp.IsSuccessStatusCode)
             {
 

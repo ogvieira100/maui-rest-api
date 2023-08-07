@@ -18,6 +18,7 @@ namespace maui_project_rest.MVVM.Model
     public class ClienteRestPut
     {
         public Guid Id { get; set; }
+
         public string CPF { get; set; }
 
         public string Nome { get; set; }
