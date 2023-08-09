@@ -19,6 +19,14 @@ FROM build AS publish
 RUN dotnet publish "api.csproj" -c Release -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
+# set noninteractive installation
+RUN export DEBIAN_FRONTEND=noninteractive
+# Configure timezone
+RUN apt-get install -y tzdata
+# Set your timezone
+ENV TZ=America/Sao_Paulo
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "api.dll"]
+ENTRYPOINT ["dotnet", "api.dll","--environment=DockerDev"]

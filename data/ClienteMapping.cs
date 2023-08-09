@@ -19,10 +19,18 @@ namespace data
                 .HasColumnName("CPF")
                 .HasMaxLength(11);
 
+            builder.Property(e => e.DataCadastro)
+              .HasColumnName("DataCadastro")
+              .HasDefaultValue(DateTime.Now);
+
 
             builder.Property(e => e.Nome)
                .HasColumnName("Nome")
                .HasMaxLength(200);
+
+            builder.Property(e => e.Valor)
+              .HasColumnName("Valor")
+              .HasPrecision(20,10);    
 
             builder.Property(e => e.Endereco)
              .HasColumnName("Endereco")

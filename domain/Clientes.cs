@@ -17,6 +17,10 @@ namespace domain
 
         public Guid Id { get; set; }
 
+        public DateTime DataCadastro { get; set; } = DateTime.Now;
+
+        public decimal? Valor { get; set; }
+
         public Clientes()
         {
                 Id = Guid.NewGuid();    

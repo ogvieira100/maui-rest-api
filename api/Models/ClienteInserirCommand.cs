@@ -8,6 +8,7 @@ namespace mongo_api.Models.Cliente
         public string? Nome { get; set; } = "";
         public string Endereco { get; set; }
 
+        public string Valor { get; set; }
 
         public ClienteInserirCommand()
         {

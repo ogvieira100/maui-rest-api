@@ -33,7 +33,7 @@ namespace mongo_api.Models.Cliente
             novoCliente.CPF = request.CPF;
             novoCliente.Nome = request.Nome;
             novoCliente.Endereco = request.Endereco;
-
+            novoCliente.Valor = Convert.ToDecimal(request.Valor);  
             await _clienteRepository.AddAsync(novoCliente);
             await _unitOfWork.CommitAsync();
             return resp;
